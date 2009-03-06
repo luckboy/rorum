@@ -1,0 +1,10 @@
+<p>
+  <%=_ "Pages:" %>
+  <%= paginating_links @topics %>
+  <% unless searching? %>
+    <% if permission_to? "topics", "new" %>
+      | <%= link_to _("New topic"), new_forum_topic_path %>
+    <% end %>
+    | <%= forum_path_links @forum %>
+  <% end %>
+</p>

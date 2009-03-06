@@ -1,0 +1,16 @@
+<tr>
+  <td class="column_left_20">
+    <%=h post.author.login %><br />
+    Roles: <%=h (post.author.roles.collect { |role| role.name }.join ", ") %><br />
+    Joined: <%=h (post.author.created_at.to_formatted_s :short) %><br />
+    Posts: <%=h post.author.posts.count %><br />
+  </td>
+  <td class="column_left">
+    Posted: <%=h (post.created_at.to_formatted_s :short) %>
+    <hr />
+    <%= body_format post.body %>
+    <br />
+    <%= link_to "Edit", [:edit, @topic, post] if permission_to? "posts", "edit", post %>
+    <%= link_to "Destroy", [@topic, post], :confirm => "Are you sure?", :method => :delete if permission_to? "posts", "delete", post %>
+  </td>
+</tr>

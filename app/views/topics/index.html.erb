@@ -1,0 +1,23 @@
+<%= render :partial => "links" %>
+<div class="block">
+  <h2>
+    <% unless searching? %>
+      <%=h @forum.name %>
+    <% else %>
+      <%=_ "Search found %d matches", @topics.count %>
+    <% end %>
+  </h2>
+  <div class="table">
+    <table>
+      <tr>
+        <th class="column_left"><%=_ "Topic" %></th>
+        <th class="column_center_10"><%=_ "Author" %></th>
+        <th class="column_center_10"><%=_ "Replies" %></th>
+        <th class="column_left_25"><%=_ "Last post" %></th>
+      </tr>
+
+      <%= render :partial => "topic", :collection => @topics %>
+    </table>
+  </div>
+</div>
+<%= render :partial => "links" %>

@@ -1,0 +1,5 @@
+<%= render :partial => "category", :collection => @categories %>
+
+<% if admin? %>
+  <%= link_to _("New category"), new_category_path %>
+<% end %>

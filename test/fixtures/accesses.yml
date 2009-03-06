@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+user_one:
+  role: user
+  forum: one
+
+user_two:
+  role: user
+  forum: two
+
+user_three:
+  role: user
+  forum: three

@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%=_ "Rorum - Forum written in Ruby on Rails" %></title>
+  <%= stylesheet_link_tag "style" %>
+</head>
+<body>
+
+<h1 style="text-align: center"><%=_ "Rorum - Forum written in Ruby on Rails" %></h1>
+
+<div id="mainmenu">
+  <ul>
+    <li><%= link_to _("Index"), root_path %></li>
+    <li><%= link_to _("Users"), userlist_path %></li>
+    <% if admin? %>
+      <li><%= link_to _("Roles"), roles_path %></li>
+    <% end %>
+    <li><%= link_to _("Search"), search_path %></li>
+    <% if logged_in? %>
+      <li><%= link_to _("Profile"), edit_profile_path(current_user.profile) %></li>
+      <li><%= link_to _("Logout"), logout_path %></li>
+    <% else %>
+      <li><%= link_to _("Sign up"), signup_path %></li>
+      <li><%= link_to _("Log in"), login_path %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div id="login_logout">
+  <% if logged_in? %>
+    <p>
+      <%=_ "Logged in as:" %>
+      <%= current_user.login %>
+    </p>
+  <% else %>
+    <p><%=_ "Not logged in." %></p>
+  <% end %>
+</div>
+
+<% unless flash[:notice].blank? %>
+  <p id="notice"><%= flash[:notice] %></p>
+<% end %>
+<% unless flash[:error].blank? %>
+  <p id="error"><%= flash[:error] %></p>
+<% end %>
+
+<%= yield  %>
+
+<div id="footer">
+  <p><%= mail_to("luckboy@vp.pl", "by Łukasz Szpakowski") %></p>
+</div>
+</body>
+</html>

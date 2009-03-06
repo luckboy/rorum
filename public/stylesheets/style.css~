@@ -1,0 +1,152 @@
+body {
+    background-color: #fff;
+    color: #333;
+}
+
+body, p, ol, ul, td {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size:   13px;
+    line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+    color: #000;
+}
+
+a:visited {
+    color: #666;
+}
+
+a:hover {
+    color: #fff;
+    background-color:#000;
+}
+
+#notice {
+    color: green;
+}
+
+#error {
+    color: red;
+}
+
+#login_logout {
+    text-align: right;
+    color: #999;
+}
+
+.block {
+    border: 2px solid #333;
+    background-color: #f0f0f0;
+    padding: 7px 7px 12px 7px;
+    margin: 5px 0px 5px 0px;
+}
+
+.block h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    margin: -7px -7px 0px -7px;
+    font-size: 12px;
+    background-color: #777;
+    color: #fff;
+}
+
+.block p {
+    color: #333;
+    margin: 7px;
+    padding: 5px;
+}
+
+.table {
+    margin: 1px -7px -12px -7px;
+}
+
+.table table {
+    border: 1px solid #333;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table table th {
+    border: 1px solid #333;
+    background-color: #ddd;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.table table td {
+   border: 1px solid #333;
+   padding: 5px;
+   vertical-align: top;
+}
+
+.table table td h3 {
+    text-align: left;
+    font-weight: bold;
+    padding: 0px 0px 0px 0px;
+    font-size: 12px;
+    margin: 0px;
+}
+
+.column_left {
+    text-align: left;
+}
+
+.column_center_10 {
+    text-align: center;
+    width: 10%;
+}
+
+.column_left_25 {
+    text-align: left;
+    width: 25%;
+}
+
+.column_left_20 {
+    text-align: left;
+    width: 20%;
+}
+
+.fieldWithErrors {
+    margin: 0px 0px 0px 12px;
+    padding: 2px;
+    background-color: red;
+    display: table;
+}
+
+#errorExplanation {
+    width: 400px;
+    border: 2px solid red;
+    padding: 7px 7px 12px 7px;
+    /*margin-bottom: 20px;*/
+    margin: 5px 0px 20px 0px;
+    background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
+}
+
+#errorExplanation p {
+    color: #333;
+    margin: 7px;
+    padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}

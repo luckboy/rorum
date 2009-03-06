@@ -1,0 +1,49 @@
+<div class="block">
+  <h2><%=_ "Profile" %></h2>
+  <p>
+    <b><%=_ "Login:" %></b>
+    <%=h @profile.user.login %>
+  </p>
+
+  <p>
+    <b><%=_ "Roles:" %></b>
+    <%= role_list(@profile.user.roles) %>
+  </p>
+
+  <p>
+    <b><%=_ "Email:" %></b>
+    <%= mail_to(@profile.user.email, h(@profile.user.email)) %>
+  </p>
+
+  <p>
+    <b><%=_ "Real name:" %></b>
+    <%=h @profile.real_name %>
+  </p>
+
+  <p>
+    <b><%=_ "Location:" %></b>
+    <%=h @profile.location %>
+  </p>
+
+  <p>
+    <b><%=_ "Website:" %></b>
+    <%=h @profile.website %>
+  </p>
+
+  <p>
+    <b><%=_ "Avatar:" %></b><br />
+    <% if @profile.use_avatar %>
+      <%= image_tag @profile.avatar.url(:small) %>
+    <% else %>
+      (No avatar)
+    <% end %>
+  </p>
+
+  <p>
+    <b><%=_ "Signature:" %></b><br />
+    <%= body_format @profile.signature %>
+  </p>
+</div>
+
+<%= link_to _('Edit'), edit_profile_path(@profile) %> |
+<%= link_to _('Back'), profiles_path %>

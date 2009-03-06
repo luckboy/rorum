@@ -1,0 +1,48 @@
+<% form_for(@profile, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="block">
+    <h2><%=_ "Edit profile" %></h2>
+    <p>
+      <%=_ "Login: " %>
+      <%=h @profile.user.login %>
+    </p>
+    <p>
+      <%= link_to _("Edit password and/or email"), edit_user_path(@profile.user) %>
+    </p>
+    <p>
+      <%= f.label :language, _("Language") %><br />
+      <%= f.select :language, [["English", "en"], ["Polski", "pl"]] %>
+    </p>
+    <p>
+      <%= f.label :real_name, _("Real name") %><br />
+      <%= f.text_field :real_name %>
+    </p>
+    <p>
+      <%= f.label :location, _("Location") %><br />
+      <%= f.text_field :location %>
+    </p>
+    <p>
+      <%= f.label :website, _("Website") %><br />
+      <%= f.text_field :website %>
+    </p>
+    <p>
+      <%= f.label :use_avatar, _("Use avatar") %><br />
+      <%= f.check_box :use_avatar %>
+    </p>
+    <p>
+      <%= f.label :avatar, _("Avatar") %><br />
+      <%= f.file_field :avatar %>
+    </p>
+    <p>
+      <%= f.label :signature, _("Signature") %><br />
+      <%= f.text_area :signature %>
+    </p>
+    <p>
+      <%= f.submit _("Update") %>
+    </p>
+  </div>
+<% end %>
+
+<%= link_to _('Show'), @profile %> |
+<%= link_to _('Back'), '/' %>

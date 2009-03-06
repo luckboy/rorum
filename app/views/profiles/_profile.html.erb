@@ -1,0 +1,23 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<tr>
+  <td class="column_left">
+    <%= link_to(profile.user.login, profile_url(profile)) %>
+    <% if admin? %>
+      <br />
+      <%= link_to _("Edit role list"), edit_role_list_path(profile.user) %>
+    <% end %>
+  </td>
+  <td class="column_left_25">
+  <%= role_list(profile.user.roles) %>
+  </td>
+  <td class="column_center_10">
+    <%=h profile.user.posts.count %>
+  </td>
+  <td class="column_left_25">
+    <%=h profile.user.created_at.to_formatted_s :short %>
+  </td>
+</tr>

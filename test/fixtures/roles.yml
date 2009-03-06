@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+admin:
+  name: admin
+  is_admin: true
+  is_default: false
+  rights_to_own_topic: 7
+  rights_to_other_topic: 7
+  rights_to_own_post: 7
+  rights_to_other_post: 7
+
+user:
+  name: user
+  is_admin: false
+  is_default: true
+  rights_to_own_topic: 1
+  rights_to_other_topic: 0
+  rights_to_own_post: 1
+  rights_to_other_post: 0

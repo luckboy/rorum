@@ -1,0 +1,56 @@
+<div class="block">
+  <h2><%=_ "Role" %></h2>
+  <p>
+    <b><%=_ "Name:" %></b>
+    <%=h @role.name %>
+  </p>
+  <p>
+      <b><%=_ "Administrator:" %></b>
+      <%=h @role.is_admin %>
+  </p>
+  <p>
+      <b><%=_ "Default:" %></b>
+      <%=h @role.is_default %>
+  </p>
+  <div class="blocktable">
+    <table>
+      <tr>
+        <th class="column_left" />
+        <th class="column_center"><b><%=_ "Rights to create" %></b></th>
+        <th class="column_center"><b><%=_ "Rights to update" %></b></th>
+        <th class="column_center"><b><%=_ "Rights to delete" %></b></th>
+      </tr>
+      <tr>
+        <th class="column_left"><b><%=_ "Rights to own topic" %></b></th>
+        <td class="column_center"><%=h @role.rights_to_own_topic_create %></td>
+        <td class="column_center"><%=h @role.rights_to_own_topic_update %></td>
+        <td class="column_center"><%=h @role.rights_to_own_topic_delete %></td>
+      </tr>
+      <tr>
+        <th class="column_left"><b><%=_ "Rights to other topic" %></b></th>
+        <td class="column_center"><%=h @role.rights_to_other_topic_create %></td>
+        <td class="column_center"><%=h @role.rights_to_other_topic_update %></td>
+        <td class="column_center"><%=h @role.rights_to_other_topic_delete %></td>
+      </tr>
+      <tr>
+        <th class="column_left"><b><%=_ "Rights to own post" %></b></th>
+        <td class="column_center"><%=h @role.rights_to_own_post_create %></td>
+        <td class="column_center"><%=h @role.rights_to_own_post_update %></td>
+        <td class="column_center"><%=h @role.rights_to_own_post_delete %></td>
+      </tr>
+      <tr>
+        <th class="column_left"><b><%=_ "Rights to other post" %></b></th>
+        <td class="column_center"><%=h @role.rights_to_other_post_create %></td>
+        <td class="column_center"><%=h @role.rights_to_other_post_update %></td>
+        <td class="column_center"><%=h @role.rights_to_other_post_delete %></td>
+      </tr>
+    </table>
+  </div>
+  <p>
+    <b><%=_ "Forums:" %></b><br />
+    <%= forum_list @role.forums %>
+  </p>
+</div>
+
+<%= link_to _('Edit'), edit_role_path(@role) %> |
+<%= link_to _('Back'), roles_path %>

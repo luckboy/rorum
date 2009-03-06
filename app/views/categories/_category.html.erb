@@ -1,0 +1,19 @@
+<div class="block">
+  <h2><%=h category.name %></h2>
+  <% if admin? %>
+    <%= link_to _("New forum"), new_category_forum_path(category) %> |
+    <%= link_to _("Edit"), edit_category_path(category) %>
+    <%= link_to _("Destroy"), category, :confirm => _("Are you sure?"), :method => :delete %>
+  <% end %>
+  <div class="table">
+    <table>
+      <tr>
+        <th class="column_left"><%=_ "Forum" %></th>
+        <th class="column_center_10"><%=_ "Topics" %></th>
+        <th class="column_center_10"><%=_ "Posts" %></th>
+        <th class="column_left_25"><%=_ "Last post" %></th>
+      </tr>
+      <%= render :partial => "forum", :locals => { :category => category }, :collection => category.forums %>
+    </table>
+  </div>
+</div>

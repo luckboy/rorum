@@ -1,0 +1,16 @@
+<%= render :partial => "links" %>
+<div class="block">
+  <h2><%=_ "Users" %></h2>
+  <div class="table">
+    <table>
+      <tr>
+        <th class="column_left"><%=_ "Login" %></th>
+        <th class="column_left_25"><%=_ "Roles" %></th>
+        <th class="column_center_10"><%=_ "Posts" %></th>
+        <th class="column_left_25"><%=_ "Joined" %></th>
+      </tr>
+      <%= render :partial => "profile", :collection => @profiles %>
+    </table>
+  </div>
+</div>
+<%= render :partial => "links" %>

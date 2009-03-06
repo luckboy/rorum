@@ -1,0 +1,2 @@
+(in /home/luck/develop/prj/rails/rorum)
+Rails requires RubyGems >= 1.1.1 (you have 1.0.1). Please `gem update --system` and try again.

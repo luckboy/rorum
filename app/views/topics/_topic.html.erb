@@ -1,0 +1,17 @@
+<tr>
+  <td class="column_left">
+    <%= link_to((h topic.subject), topic_posts_path(topic)) %>
+    <br />
+    <%= link_to _("Edit"), [:edit, @forum, topic] if permission_to? "topics", "edit", topic %>
+    <%= link_to _("Destroy"), [@forum, topic], :confirm => _("Are you sure?"), :method => :delete if permission_to? "topics", "delete", topic %>
+  </td>
+  <td class="column_center_10">
+    <%=h topic.author.login %>
+  </td>
+  <td class="column_center_10">
+    <%=h topic.replies_count %>
+  </td>
+  <td class="column_left_25">
+    <%= link_to_post topic.last_post %>
+  </td>
+</tr>

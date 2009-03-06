@@ -1,0 +1,14 @@
+<% form_for(@category) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="block">
+    <h2><%=h header_block %></h2>
+    <p>
+      <%= f.label :name, _("Name") %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.submit button_name %>
+    </p>
+  </div>
+<% end %>

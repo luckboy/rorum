@@ -1,0 +1,19 @@
+<% form_for(@user, :url => role_list_path(@user)) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="block">
+    <h2><%=_ "Edit role list" %></h2>
+    <p>
+      <%=_ "Login:" %>
+      <%=h @user.login %>
+    </p>
+    <p>
+      <%= f.label :role_ids, _("Roles") %><br />
+      <%= f.collection_select :role_ids, Role.find(:all), :id, :name, { }, { :multiple => true } %>
+    </p>
+    <p>
+      <%= f.submit _("Update") %>
+    </p>
+  </div>
+<% end %>
+<%= link_to _('Back'), profiles_path %>

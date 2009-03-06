@@ -1,0 +1,21 @@
+<% form_tag session_path do -%>
+  <div class="block">
+    <h2><%=_ "Log in" %></h2>
+    <p>
+      <%= label_tag "login", _("Login") %><br />
+      <%= text_field_tag 'login' %>
+    </p>
+    <p>
+      <%= label_tag "password", _("Password") %><br />
+      <%= password_field_tag "password" %>
+    </p>
+    <!-- Uncomment this if you want this functionality
+         <p><label for="remember_me">Remember me:</label>
+           <%= check_box_tag 'remember_me' %></p>
+         -->
+    <p>
+      <%= submit_tag _("Log in") %>
+    </p>
+  </div>
+<% end -%>
+<%= link_to _("Back"), "/" %>

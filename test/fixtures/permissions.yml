@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+root_admin:
+  user: root
+  role: admin
+
+quentin_user:
+  user: quentin
+  role: user
+
+aaron_user:
+  user: aaron
+  role: user

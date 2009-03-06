@@ -1,0 +1,25 @@
+<% form_tag search_output_path do -%>
+  <div class="block">
+    <h2><%=_ "Search" %></h2>
+    <p>
+      <%= label_tag "keywords", _("Search for keywords") %><br />
+      <%= text_field_tag "keywords" %>
+    </p>
+    <p>
+      <%= label_tag "author", _("Search for author") %><br />
+      <%= text_field_tag "author" %>
+    </p>
+    <p>
+      <%= label_tag "forum", _("Search in forum") %><br />
+      <%= select_tag "forum", options_for_select([[_("All forums"), ""]])+(options_from_collection_for_select Forum.find(:all), :id, :name) %>
+    </p>
+    <p>
+      <%= label_tag "search_in", _("Search in") %><br />
+      <%= select_tag "search_in", options_for_select([[_("Post body and topic subject"), 1], [_("Post body"), 2], [_("Topic subject"), 3]]) %>
+    </p>
+    <p>
+      <%= submit_tag _("Search") %>
+    </p>
+  </div>
+<% end %>
+<%= link_to _("Back"), "/" %>

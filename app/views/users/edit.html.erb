@@ -1,0 +1,22 @@
+<% form_for :user, :url => user_path(@user), :html => { :method => :put } do |f| %>
+  <%= f.error_messages %>
+  <div class="block">
+    <h2><%=_ "Edit password and/or email" %></h2>
+    <p>
+      <%= f.label :email, _("Email") %><br />
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label :password, _("Password") %><br />
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation, _("Confirm password") %><br />
+      <%= f.password_field :password_confirmation %>
+    </p>
+    <p>
+      <%= f.submit _("Update") %>
+    </p>
+  </div>
+<% end %>
+<%= link_to _("Back"), edit_profile_path(@user.profile) %>

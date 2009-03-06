@@ -1,0 +1,16 @@
+<%= forum_path_links @forum %>
+<% form_for([@forum, @topic]) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="block">
+    <h2><%=_ "Edit topic" %></h2>
+    <p>
+      <%= f.label :subject, _("Subject") %><br />
+      <%= f.text_field :subject %>
+    </p>
+    <p>
+      <%= f.submit _("Update") %>
+    </p>
+  </div>
+<% end %>
+<%= link_to _('Back'), forum_topics_path %>

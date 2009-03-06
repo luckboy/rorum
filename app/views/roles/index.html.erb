@@ -1,0 +1,16 @@
+<div class="block">
+  <h2><%=_ "Roles" %></h2>
+  <div class="table">
+    <table>
+      <tr>
+        <th class="column_left"><%=_ "Name" %></th>
+        <th class="column_center_10"><%=_ "Administrator" %></th>
+        <th class="column_center_10"><%=_ "Default" %></th>
+        <th class="column_center_10"><%=_ "Users" %></th>
+        <th class="column_center_10"><%=_ "Forums" %></th>
+      </tr>
+      <%= render :partial => "role", :collection => @roles %>
+    </table>
+  </div>
+</div>
+<%= link_to _('New role'), new_role_path %>

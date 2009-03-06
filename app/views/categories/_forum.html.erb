@@ -1,0 +1,18 @@
+<tr>
+  <td class="column_left">
+    <h3><%= link_to((h forum.name), forum_topics_path(forum)) %></h3><%=h forum.description %><br />
+    <% if admin? %>
+      <%= link_to _("Edit"), [:edit, category, forum] %>
+      <%= link_to _("Destroy"), [category, forum], :confirm => "Are you sure?", :method => :delete %>
+    <% end %>
+  </td>
+  <td class="column_center_10">
+    <%=h forum.topics.count %>
+  </td>
+  <td class="column_center_10">
+    <%=h forum.posts_count %>
+  </td>
+  <td class="column_left_25">
+    <%= link_to_post forum.last_post %>
+  </td>
+</tr>

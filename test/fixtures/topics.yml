@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  subject: Super topic
+  author: aaron
+  forum: one
+
+two:
+  subject: Topic 2
+  author: root
+  forum: one
+
+three:
+  subject: Super topic 2
+  author: quentin
+  forum: two
+
+four:
+  subject: Topic 4
+  author: quentin
+  forum: two
+
+five:
+  subject: Topic 5
+  author: aaron
+  forum: two
+
+empty:
+  subject: Empty
+  author:
+  forum:

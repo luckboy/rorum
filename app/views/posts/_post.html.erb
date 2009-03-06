@@ -1,0 +1,29 @@
+<tr>
+  <td class="column_left_20">
+    <%=h post.author.login %><br />
+    <% if post.author.profile.use_avatar %>
+      <%= image_tag post.author.profile.avatar.url(:small) %><br />
+    <% end %>
+    <%=_ "Roles:" %>
+    <%= role_list(post.author.roles) %><br />
+    <%=_ "Joined:" %>
+    <%=h post.author.created_at.to_formatted_s(:short) %><br />
+    <%=_ "Posts:" %>
+    <%=h post.author.posts.count %><br />
+  </td>
+
+  <td class="column_left">
+    <%= content_tag :a, " ", :name => :"post_#{post.id}" %>
+    <%=_ "Posted:" %>
+    <%=h post.created_at.to_formatted_s(:short) %>
+    <hr />
+    <p><%= body_format post.body %></p>
+    <% unless post.author.profile.signature.blank? %>
+      <hr style="margin-right: 50%" />
+      <p><%= body_format post.author.profile.signature %></p>
+    <% end %>
+    <br />
+    <%= link_to _("Edit"), [:edit, @topic, post] if permission_to? "posts", "edit", post %>
+    <%= link_to _("Destroy"), [@topic, post], :confirm => _("Are you sure?"), :method => :delete if permission_to? "posts", "delete", post %>
+  </td>
+</tr>

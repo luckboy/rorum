@@ -1,0 +1,19 @@
+<tr>
+  <td class="column_left">
+    <%= link_to h(role.name), role %><br />
+    <%= link_to _('Edit'), edit_role_path(role) %>
+    <%= link_to _('Destroy'), role, :confirm => _('Are you sure?'), :method => :delete %>
+  </td>
+  <td class="column_center_10">
+    <%=h role.is_admin %>
+  </td>
+  <td class="column_center_10">
+    <%=h role.is_default %>
+  </td>
+  <td class="column_center_10">
+    <%=h role.users.count %>
+  </td>
+  <td class="column_center_10">
+    <%=h role.forums.count %>
+  </td>
+</tr>

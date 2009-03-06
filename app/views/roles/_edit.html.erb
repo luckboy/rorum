@@ -1,0 +1,60 @@
+<% form_for(@role) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="block">
+    <h2><%=h header_block %></h2>
+    <p>
+      <%= f.label :name, _("Name") %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :is_admin, _("Administrator") %><br />
+      <%= f.check_box :is_admin %>
+    </p>
+    <p>
+      <%= f.label :is_default, _("Default") %><br />
+      <%= f.check_box :is_default %>
+    </p>
+    <div class="blocktable">
+      <table>
+        <tr>
+          <th></th>
+          <th class="column_center"><label><%=_ "Rights to create" %></label></th>
+          <th class="column_center"><label><%=_ "Rights to update" %></label></th>
+          <th class="column_center"><label><%=_ "Rights to delete" %></label></th>
+        </tr>
+        <tr>
+          <th class="column_left"><label><%=_ "Rights to own topic" %></label></th>
+          <td class="column_center"><%= f.check_box :rights_to_own_topic_create %></td>
+          <td class="column_center"><%= f.check_box :rights_to_own_topic_update %></td>
+          <td class="column_center"><%= f.check_box :rights_to_own_topic_delete %></td>
+        </tr>
+        <tr>
+          <th class="column_left"><label><%=_ "Rights to other topic" %></label></th>
+          <td class="column_center"><%= f.check_box :rights_to_other_topic_create %></td>
+          <td class="column_center"><%= f.check_box :rights_to_other_topic_update %></td>
+          <td class="column_center"><%= f.check_box :rights_to_other_topic_delete %></td>
+        </tr>
+        <tr>
+          <th class="column_left"><label><%=_ "Rights to own post" %></label></th>
+          <td class="column_center"><%= f.check_box :rights_to_own_post_create %></td>
+          <td class="column_center"><%= f.check_box :rights_to_own_post_update %></td>
+          <td class="column_center"><%= f.check_box :rights_to_own_post_delete %></td>
+        </tr>
+        <tr>
+          <th class="column_left"><label><%=_ "Rights to other post" %></label></th>
+          <td class="column_center"><%= f.check_box :rights_to_other_post_create %></td>
+          <td class="column_center"><%= f.check_box :rights_to_other_post_update %></td>
+          <td class="column_center"><%= f.check_box :rights_to_other_post_delete %></td>
+        </tr>
+      </table>
+    </div>
+    <p>
+      <%= f.label :forum_ids, _("Forums") %><br />
+      <%= f.collection_select :forum_ids, Forum.find(:all), :id, :name, { }, { :multiple => true } %>
+    </p>
+    <p>
+      <%= f.submit button_name %>
+    </p>
+  </div>
+<% end %>
