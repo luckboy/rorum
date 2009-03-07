@@ -9,7 +9,7 @@ class TopicsControllerTest < ActionController::TestCase
     options = {
       :controller => "topics",
       :action => "index",
-      :forum_id => categories(:one).id.to_s
+      :forum_id => forums(:one).id.to_s
     }
     assert_routing "forums/#{forums(:one).id}/topics", options
   end

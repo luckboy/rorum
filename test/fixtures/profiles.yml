@@ -1,15 +1,22 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+quentin:
   real_name: MyString
   location: MyString
   website: MyString
   signature: MyString
-  user: 
+  user: quentin
 
-two:
+aaron:
   real_name: MyString
   location: MyString
   website: MyString
   signature: MyString
-  user: 
+  user: aaron
+
+root:
+  real_name: MyString
+  location: MyString
+  website: MyString
+  signature: MyString
+  user: root
