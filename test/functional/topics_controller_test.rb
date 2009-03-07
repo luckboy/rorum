@@ -43,6 +43,11 @@ class TopicsControllerTest < ActionController::TestCase
     assert_not_nil flash[:error]
   end
 
+  def test_should_not_found_get_new
+    get :new
+    assert_response :not_found
+  end
+
   def test_should_create_topic
     login_as :aaron
 
@@ -61,6 +66,13 @@ class TopicsControllerTest < ActionController::TestCase
 
     assert_redirected_to categories_path
     assert_not_nil flash[:error]
+  end
+
+  def test_should_not_found_create_topic
+    assert_no_difference('Topic.count') do
+      post :create, :topic => { :subject => "Next topic", :body => "bla bla bla"}
+    end
+    assert_response :not_found
   end
 
   # def test_should_show_topic
@@ -83,6 +95,11 @@ class TopicsControllerTest < ActionController::TestCase
     assert_not_nil flash[:error]
   end
 
+  def test_should_not_found_get_edit
+    get :edit, :id => topics(:one).id
+    assert_response :not_found
+  end
+
   def test_should_update_topic
     login_as :root
 
@@ -99,6 +116,10 @@ class TopicsControllerTest < ActionController::TestCase
     assert_not_nil flash[:error]
   end
 
+  def test_should_not_found_update_topic
+    put :update, :id => topics(:one).id, :topic => { }
+    assert_response :not_found
+  end
 
   def test_should_destroy_topic
     login_as :root
@@ -121,4 +142,11 @@ class TopicsControllerTest < ActionController::TestCase
     assert_not_nil flash[:error]
   end
 
+  def test_should_not_found_destroy_topic
+    assert_no_difference('Topic.count', -1) do
+      delete :destroy, :id => topics(:one).id
+    end
+
+    assert_response :not_found
+  end
 end

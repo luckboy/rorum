@@ -43,6 +43,11 @@ class ForumsControllerTest < ActionController::TestCase
     assert_not_nil flash[:error]
   end
 
+  def test_should_not_found_new
+    get :new
+    assert_response :not_found
+  end
+
   def test_should_create_forum
     login_as :root
 
@@ -63,6 +68,14 @@ class ForumsControllerTest < ActionController::TestCase
     assert_not_nil flash[:error]
   end
 
+  def test_should_not_found_create_forum
+    assert_no_difference('Forum.count') do
+      post :create, :forum => { :name => 'Next forum', :description => 'bla bla bla.' }
+    end
+
+    assert_response :not_found
+  end
+
   # def test_should_show_forum
   #   get :show, :id => forums(:one).id
   #   assert_response :success
@@ -81,6 +94,11 @@ class ForumsControllerTest < ActionController::TestCase
     assert_not_nil flash[:error]
   end
 
+  def test_should_not_found_get_edit
+    get :edit, :id => forums(:one).id
+    assert_response :not_found
+  end
+
   def test_should_update_forum
     login_as :root
 
@@ -89,10 +107,15 @@ class ForumsControllerTest < ActionController::TestCase
     assert_redirected_to categories_path
   end
 
-  def test_should_permission_denied_forum
+  def test_should_permission_denied_update_forum
     put :update, :category_id => categories(:one).id, :id => forums(:one).id, :forum => { }
     assert_redirected_to categories_path
     assert_not_nil flash[:error]
+  end
+
+  def test_should_not_found_update_forum
+    put :update, :id => forums(:one).id, :forum => { }
+    assert_response :not_found
   end
 
   def test_should_destroy_forum
@@ -113,5 +136,13 @@ class ForumsControllerTest < ActionController::TestCase
 
     assert_redirected_to categories_path
     assert_not_nil flash[:error]
+  end
+
+  def test_should_not_found_destroy_forum
+    assert_no_difference('Forum.count', -1) do
+      delete :destroy, :id => forums(:one).id
+    end
+
+    assert_response :not_found
   end
 end
