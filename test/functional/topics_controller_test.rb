@@ -63,17 +63,18 @@ class TopicsControllerTest < ActionController::TestCase
   def test_should_update_topic
     login_as :root
 
-    put :update, :forum_id => forum(:one).id, :id => topics(:one).id, :topic => { }
-    assert_redirected_to topic_path(assigns(:topic))
+    put :update, :forum_id => forums(:one).id, :id => topics(:one).id, :topic => { }
+    # assert_redirected_to topic_path(assigns(:topic))
+    assert_redirected_to topic_posts_path(assigns(:topic))
   end
 
   def test_should_destroy_topic
     login_as :root
 
     assert_difference('Topic.count', -1) do
-      delete :destroy, :id => topics(:one).id
+      delete :destroy, :forum_id => forums(:one), :id => topics(:one).id
     end
 
-    # assert_redirected_to topics_path
+    assert_redirected_to forum_topics_path
   end
 end
