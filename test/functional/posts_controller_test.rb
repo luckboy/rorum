@@ -46,6 +46,14 @@ class PostsControllerTest < ActionController::TestCase
     assert_redirected_to topic_posts_path(assigns(:topic))
   end
 
+  def test_should_permission_denied_to_create_post
+    assert_no_difference('Post.count') do
+      post :create, :topic_id => topics(:one).id, :post => { :body => "bla bla bla bla" }
+    end
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]
+  end
+
   def test_should_show_post
     get :show, :topic_id => topics(:one).id, :id => posts(:one).id
     assert_response :redirect
@@ -58,12 +66,28 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  def test_should_permission_denied_to_get_edit
+    login_as :aaron
+
+    get :edit, :topic_id => topics(:one).id, :id => posts(:one).id
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]
+  end
+
   def test_should_update_post
     login_as :root
 
     put :update, :topic_id => topics(:one).id, :id => posts(:one).id, :post => { }
     # assert_redirected_to post_path(assigns(:post))
     assert_redirected_to topic_posts_path(assigns(:topic))
+  end
+
+  def test_should_pemission_denied_to_update_post
+    login_as :aaron
+
+    put :update, :topic_id => topics(:one).id, :id => posts(:one).id, :post => { }
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]
   end
 
   def test_should_destroy_post
@@ -75,5 +99,16 @@ class PostsControllerTest < ActionController::TestCase
 
     # assert_redirected_to posts_path
     assert_redirected_to topic_posts_path(assigns(:topic))
+  end
+
+    def test_should_pemission_denied_to_destroy_post
+    login_as :aaron
+
+    assert_no_difference('Post.count', -1) do
+      delete :destroy, :topic_id => topics(:one).id, :id => posts(:one).id
+    end
+
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]
   end
 end

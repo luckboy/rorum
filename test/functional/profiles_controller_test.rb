@@ -34,12 +34,24 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  def test_should_permission_denied_to_get_edit
+    get :edit, :id => profiles(:quentin).id
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]
+  end
+
   def test_should_update_profile
     login_as :quentin
 
     put :update, :id => profiles(:quentin).id, :profile => { }
     # assert_redirected_to profile_path(assigns(:profile))
     assert_redirected_to categories_path
+  end
+  
+  def test_should_pemission_denied_to_update_profile
+    put :update, :id => profiles(:quentin).id, :profile => { }
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]    
   end
 
 #  def test_should_destroy_profile

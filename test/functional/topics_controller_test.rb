@@ -37,6 +37,12 @@ class TopicsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  def test_should_permission_denied_to_get_new
+    get :new, :forum_id => forums(:one).id
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]
+  end
+
   def test_should_create_topic
     login_as :aaron
 
@@ -46,6 +52,15 @@ class TopicsControllerTest < ActionController::TestCase
 
     # assert_redirected_to topic_path(assigns(:topic))
     assert_redirected_to topic_posts_path(assigns(:topic))
+  end
+
+  def test_should_permission_denied_to_create_topic
+    assert_no_difference('Topic.count') do
+      post :create, :forum_id => forums(:one).id, :topic => { :subject => "Next topic", :body => "bla bla bla"}
+    end
+
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]
   end
 
   # def test_should_show_topic
@@ -60,6 +75,14 @@ class TopicsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  def test_should_permission_denied_to_get_edit
+    login_as :aaron
+
+    get :edit, :forum_id => forums(:one).id, :id => topics(:one).id
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]
+  end
+
   def test_should_update_topic
     login_as :root
 
@@ -67,6 +90,15 @@ class TopicsControllerTest < ActionController::TestCase
     # assert_redirected_to topic_path(assigns(:topic))
     assert_redirected_to topic_posts_path(assigns(:topic))
   end
+
+  def test_should_permission_denied_to_update_topic
+    login_as :aaron
+
+    put :update, :forum_id => forums(:one).id, :id => topics(:one).id, :topic => { }
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]
+  end
+
 
   def test_should_destroy_topic
     login_as :root
@@ -77,4 +109,16 @@ class TopicsControllerTest < ActionController::TestCase
 
     assert_redirected_to forum_topics_path
   end
+
+  def test_should_permission_denied_to_destroy_topic
+    login_as :aaron
+
+    assert_no_difference('Topic.count', -1) do
+      delete :destroy, :forum_id => forums(:one), :id => topics(:one).id
+    end
+
+    assert_redirected_to categories_path
+    assert_not_nil flash[:error]
+  end
+
 end
