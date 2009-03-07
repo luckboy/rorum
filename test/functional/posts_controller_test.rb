@@ -114,7 +114,7 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   def test_should_not_found_update_post
-    put :update, :topic_id => topics(:one).id, :id => posts(:one).id, :post => { }
+    put :update, :id => posts(:one).id, :post => { }
     assert_response :not_found
   end
 
