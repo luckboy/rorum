@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
   before_filter :load_forum_if_no_search
+  before_filter :forum_required
   before_filter :permission_required
 
   # GET /topics
@@ -97,6 +98,10 @@ class TopicsController < ApplicationController
   protected
   def load_forum_if_no_search
     load_forum unless params[:forum_id].nil?
+  end
+
+  def forum_required
+    render_not_found if searching? and action_name != "index"
   end
 
   def searching?
