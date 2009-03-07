@@ -48,7 +48,8 @@ class ProfilesController < ApplicationController
       if @profile.update_attributes(params[:profile])
         flash[:notice] = _ 'Profile was successfully updated.'
         #format.html { redirect_to(@profile) }
-        format.html  { redirect_to(profiles_path)}
+        #format.html  { redirect_to(profiles_path)}
+        format.html  { redirect_to("/") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
