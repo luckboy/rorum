@@ -23,10 +23,16 @@ class SessionsControllerTest < Test::Unit::TestCase
     assert_response :redirect
   end
 
-  def test_should_fail_login_and_not_redirect
+#  def test_should_fail_login_and_not_redirect
+#    post :create, :login => 'quentin', :password => 'bad password'
+#    assert_nil session[:user_id]
+#    assert_response :success
+#  end
+
+  def test_should_fail_login_and_redirect
     post :create, :login => 'quentin', :password => 'bad password'
     assert_nil session[:user_id]
-    assert_response :success
+    assert_response :redirect
   end
 
   def test_should_logout
