@@ -30,6 +30,19 @@ class TopicsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:topics)
   end
 
+  def test_should_get_index_of_search_outputs
+    get :index, :keywords => "MyText1", :author => "aaron", :forum => "", :search_in => "1"
+    assert_response :success
+    assert_not_nil assigns(:topics)
+    assert_equal assigns(:topics).to_a, [topics(:one)]
+  end
+
+  def test_should_fail_get_index_of_search_outputs
+    get :index, :keywords => "", :author => "", :forum => "", :search_in => "1"
+    assert_redirected_to new_search_output_path
+    assert_not_nil flash[:error]
+  end
+
   def test_should_get_new
     login_as :aaron
 
