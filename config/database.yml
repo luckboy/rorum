@@ -11,7 +11,8 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: rorum_development
+#  database: rorum_development
+  database: rorum_installation
   username: luck
   password: luck
 
