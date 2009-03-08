@@ -23,6 +23,13 @@ class ApplicationController < ActionController::Base
   var_loader :category, :forum, :topic
 
   def set_lang
-    Localization.lang = ((logged_in? and current_user.profile and LANGUAGES.detect { |lang| current_user.profile.language == lang }) or "en")
+    Localization.lang = ((logged_in? and current_user.profile and LANGUAGES.values.detect { |lang| current_user.profile.language == lang }) or "en")
   end
+
+  def languages
+    LANGUAGES
+  end
+
+  helper_method :languages
+
 end

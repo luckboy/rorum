@@ -12,7 +12,7 @@
     </p>
     <p>
       <%= f.label :language, _("Language") %><br />
-      <%= f.select :language, [["English", "en"], ["Polski", "pl"]] %>
+      <%= f.select :language, languages.to_a %>
     </p>
     <p>
       <%= f.label :real_name, _("Real name") %><br />

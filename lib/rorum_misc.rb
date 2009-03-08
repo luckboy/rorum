@@ -45,7 +45,7 @@ module RorumMisc
   end
 
   RIGHTS = { :create => 0, :update => 1, :delete => 2 }
-  LANGUAGES = ["en", "pl"]
+  LANGUAGES = { "English" => "en", "Polski" => "pl" }
 
   protected
   def render_not_found()
